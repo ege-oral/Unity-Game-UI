@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -7,6 +8,7 @@ namespace UI
     {
         [SerializeField] private TabButton[] tabButtons;
         [SerializeField] private RectTransform highlightBg;
+        [SerializeField] private RectTransform buttonsContainer;
         [SerializeField] private float followSpeed = 15f;
 
         private TabButton _currentTab;
@@ -23,7 +25,7 @@ namespace UI
         private void Start()
         {
             if (tabButtons.Length <= 0 || DefaultTabIndex >= tabButtons.Length) return;
-            
+
             SelectTab(tabButtons[DefaultTabIndex]);
             SnapHighlight();
         }
@@ -55,8 +57,8 @@ namespace UI
 
         private void SelectTab(TabButton tab, bool animated = false)
         {
-            foreach (var t in tabButtons)
-                t.Deselect(animated);
+            foreach (var tabButton in tabButtons)
+                tabButton.Deselect(animated);
 
             _currentTab = tab;
             _currentTab.Select(animated);
@@ -66,7 +68,7 @@ namespace UI
 
         private void SnapHighlight()
         {
-            if (_currentTab == null) return;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(buttonsContainer);
 
             var pos = highlightBg.anchoredPosition;
             pos.x = GetTargetX();
@@ -75,12 +77,7 @@ namespace UI
 
         private float GetTargetX()
         {
-            var parent = highlightBg.parent as RectTransform;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                parent, RectTransformUtility.WorldToScreenPoint(null, _currentTab.transform.position),
-                null, out var localPoint);
-            return localPoint.x;
+            return _currentTab.transform.localPosition.x;
         }
-
     }
 }

@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 namespace UI
 {
+    /// <summary>
+    /// Button with press/release scale animation and click cooldown.
+    /// Extends Unity's Button to add visual feedback on pointer interaction.
+    /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(RectTransform))]
     public class AnimatedButton : Button

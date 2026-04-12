@@ -527,6 +527,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 47
       objectReference: {fileID: 0}
+    - target: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
+      propertyPath: tabType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8010228178035959824, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
       propertyPath: m_SizeDelta.x
       value: 135.5851
@@ -653,6 +657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TabButton (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
+      propertyPath: tabType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -754,7 +762,7 @@ GameObject:
   - component: {fileID: 1070394668}
   - component: {fileID: 1070394669}
   m_Layer: 5
-  m_Name: BottomBar
+  m_Name: BottomBarController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,8 +801,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de31688dee0f74a3fb578731f3b880c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarViewController
-  tabButtons: []
-  defaultTabIndex: 0
+  tabButtons:
+  - {fileID: 1511390084}
+  - {fileID: 2115755022}
+  - {fileID: 1932935867}
+  - {fileID: 1698890579}
+  - {fileID: 1521027664}
+  highlightBg: {fileID: 1667572504}
+  buttonsContainer: {fileID: 216384828}
+  followSpeed: 2000
 --- !u!1001 &1083895322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -921,6 +936,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3279132833666387571, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
   m_PrefabInstance: {fileID: 1083895322}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1511390084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
+  m_PrefabInstance: {fileID: 4649882739104615758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
+--- !u!114 &1521027664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
+  m_PrefabInstance: {fileID: 1083895322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
 --- !u!1 &1667572503
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,8 +993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 6.2569}
-  m_SizeDelta: {x: 295.8399, y: 212.51}
+  m_AnchoredPosition: {x: 0, y: -185.14197}
+  m_SizeDelta: {x: 295.8399, y: 595.3075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1667572505
 MonoBehaviour:
@@ -1017,6 +1054,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667572503}
   m_CullTransparentMesh: 1
+--- !u!114 &1698890579 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
+  m_PrefabInstance: {fileID: 506183285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
 --- !u!1 &1807946025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1144,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1932935867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
+  m_PrefabInstance: {fileID: 349538126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
 --- !u!1 &2058073432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,6 +1488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TabButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
+      propertyPath: tabType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1439,6 +1502,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3279132833666387571, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
   m_PrefabInstance: {fileID: 2115755016}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2115755022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
+  m_PrefabInstance: {fileID: 2115755016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
 --- !u!1001 &4649882739104615758
 PrefabInstance:
   m_ObjectHideFlags: 0
