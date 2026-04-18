@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.Popup.PopupRegistry
   prefabs:
-  - {fileID: 6586049470833245968, guid: 9bac3157a24f8446b976de47a5c72be8, type: 3}
+  - {fileID: 1464065040477375570, guid: 461ac8bd399cb480a93579f798a2a836, type: 3}
   parent: {fileID: 359599196}
 --- !u!4 &1034187705
 Transform:
