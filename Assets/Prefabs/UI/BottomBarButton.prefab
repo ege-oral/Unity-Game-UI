@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4626530622278912995}
   - component: {fileID: 6378403443250989850}
   m_Layer: 5
-  m_Name: TabButton
+  m_Name: BottomBarButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,12 +233,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
+  m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarButton
   containerTransform: {fileID: 3279132833666387571}
   iconTransform: {fileID: 6246378949614117893}
   label: {fileID: 327484374819894564}
   button: {fileID: 4626530622278912995}
-  tabType: 0
+  tab: 0
   settings: {fileID: 11400000, guid: 7fd3788493c0243d8a370aa48799a63c, type: 2}
 --- !u!1 &3791884117398285282
 GameObject:

@@ -1,6 +1,6 @@
 namespace UI
 {
-    public enum TabType
+    public enum BottomBarTab
     {
         Locked,
         Home,

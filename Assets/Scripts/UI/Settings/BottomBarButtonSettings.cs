@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace UI.Settings
 {
-    [CreateAssetMenu(fileName = "TabButtonSettings", menuName = "UI Config/Tab Button Settings")]
-    public class TabButtonSettings : ScriptableObject
+    [CreateAssetMenu(fileName = "BottomBarButtonSettings", menuName = "UI Config/Bottom Bar Button Settings")]
+    public class BottomBarButtonSettings : ScriptableObject
     {
         [Header("Width")]
         public float normalWidth = 145f;

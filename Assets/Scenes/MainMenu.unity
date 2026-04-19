@@ -1013,6 +1013,7 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   popupRegistry: {fileID: 1034187704}
+  bottomBarView: {fileID: 1070394669}
 --- !u!4 &842718663
 Transform:
   m_ObjectHideFlags: 0
@@ -1230,6 +1231,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4257145645429700671, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
   m_PrefabInstance: {fileID: 8777588784804965358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1070394669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5572433186053187812, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
+  m_PrefabInstance: {fileID: 8777588784804965358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de31688dee0f74a3fb578731f3b880c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarView
 --- !u!1 &1260910891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,6 +2306,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1881223758827041432, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1982325165820814265, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2520,7 +2536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7817187506720080561, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
       propertyPath: m_Name
-      value: BottomBarController
+      value: BottomBarView
       objectReference: {fileID: 0}
     - target: {fileID: 7991907974324923175, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
       propertyPath: m_text
@@ -2541,6 +2557,14 @@ PrefabInstance:
     - target: {fileID: 8438339487329418834, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
       propertyPath: m_Name
       value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537859905495335185, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659174165404417407, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

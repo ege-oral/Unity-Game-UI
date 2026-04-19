@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class TabButton : MonoBehaviour
+    public class BottomBarButton : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private RectTransform containerTransform;
@@ -16,12 +16,12 @@ namespace UI
         [SerializeField] private Button button;
 
         [Header("Settings")]
-        [SerializeField] private TabType tabType;
-        [SerializeField] private TabButtonSettings settings;
+        [SerializeField] private BottomBarTab tab;
+        [SerializeField] private BottomBarButtonSettings settings;
 
-        public event Action<TabButton> OnTabPressed;
-        public TabType TabType => tabType;
-        public bool IsLocked => tabType == TabType.Locked;
+        public event Action<BottomBarButton> OnPressed;
+        public BottomBarTab Tab => tab;
+        public bool IsLocked => tab == BottomBarTab.Locked;
 
         private bool _isSelected;
         private Sequence _sequence;
@@ -40,7 +40,7 @@ namespace UI
         private void HandlePress()
         {
             if (IsLocked) return;
-            OnTabPressed?.Invoke(this);
+            OnPressed?.Invoke(this);
         }
 
         public void Select(bool animated = false)

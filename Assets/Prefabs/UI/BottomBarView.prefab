@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 4257145645429700671}
   - component: {fileID: 5572433186053187812}
   m_Layer: 5
-  m_Name: BottomBarController
+  m_Name: BottomBarView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de31688dee0f74a3fb578731f3b880c2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarViewController
-  tabButtons:
+  m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarView
+  buttons:
   - {fileID: 6907908304718144396}
   - {fileID: 7964571888280856272}
   - {fileID: 1454750257962917255}
@@ -396,7 +396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3514299178893630016, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
       propertyPath: m_Name
-      value: LockedTabButton
+      value: LockedButton
       objectReference: {fileID: 0}
     - target: {fileID: 6246378949614117893, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
+  m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarButton
 --- !u!1001 &529584327355836566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3514299178893630016, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
       propertyPath: m_Name
-      value: LockedTabButton
+      value: LockedButton
       objectReference: {fileID: 0}
     - target: {fileID: 6246378949614117893, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -571,7 +571,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
+  m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarButton
 --- !u!1001 &3892081822989839818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -666,10 +666,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3514299178893630016, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
       propertyPath: m_Name
-      value: ShopTabButton
+      value: ShopButton
       objectReference: {fileID: 0}
     - target: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
-      propertyPath: tabType
+      propertyPath: tab
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
+  m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarButton
 --- !u!1001 &5527301602506118813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3514299178893630016, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
       propertyPath: m_Name
-      value: HomeTabButton
+      value: HomeButton
       objectReference: {fileID: 0}
     - target: {fileID: 3791884117398285282, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
       propertyPath: m_IsActive
@@ -822,7 +822,7 @@ PrefabInstance:
       value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
-      propertyPath: tabType
+      propertyPath: tab
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8010228178035959824, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
@@ -856,7 +856,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
+  m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarButton
 --- !u!224 &7004569072009631982 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3279132833666387571, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
@@ -960,10 +960,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3514299178893630016, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
       propertyPath: m_Name
-      value: LibraryTabButton
+      value: LibraryButton
       objectReference: {fileID: 0}
     - target: {fileID: 6378403443250989850, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
-      propertyPath: tabType
+      propertyPath: tab
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -981,7 +981,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c707486aca63f42e898c9aa675d5d898, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.TabButton
+  m_EditorClassIdentifier: Assembly-CSharp::UI.BottomBarButton
 --- !u!224 &5179791891706646640 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3279132833666387571, guid: d1326b9641f22482c90901a5ab3487b0, type: 3}
