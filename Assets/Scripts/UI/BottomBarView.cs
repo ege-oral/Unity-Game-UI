@@ -16,6 +16,8 @@ namespace UI
         [SerializeField] private RectTransform rectTransform;
         [SerializeField] private CanvasGroup canvasGroup;
 
+        private const int DefaultSelectedIndex = 2;
+
         [Header("Settings")]
         [SerializeField] private BottomBarViewSettings settings;
 
@@ -72,6 +74,8 @@ namespace UI
             canvasGroup.alpha = 1f;
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
+
+            ActivateButton(buttons[DefaultSelectedIndex]);
 
             _transitionSequence = DOTween.Sequence()
                 .AppendInterval(settings.showDelay)
