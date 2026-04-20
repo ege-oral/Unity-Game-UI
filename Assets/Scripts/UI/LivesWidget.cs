@@ -8,15 +8,12 @@ namespace UI
         private const string FullLabel = "Full";
         private const int MaxLives = 5;
 
-        [SerializeField] private TMP_Text currentLivesText;
+        [SerializeField] private TMP_Text remainingLivesText;
 
         public override void Setup(int count, bool showPlus)
         {
             base.Setup(count, showPlus);
-            currentLivesText.text = count.ToString();
+            remainingLivesText.text = count >= MaxLives ? FullLabel : "15:00"; // placeholder — drive from a regeneration timer service later
         }
-
-        protected override string FormatCount(int count)
-            => count >= MaxLives ? FullLabel : count.ToString();
     }
 }
