@@ -2,14 +2,22 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UI.Settings;
 using UnityEngine;
+using Logger = Core.Logger;
 
 namespace UI
 {
     public class TopBarView : MonoBehaviour
     {
+        private const string LogTag = "TopBar";
+
         [Header("References")]
         [SerializeField] private RectTransform rectTransform;
         [SerializeField] private CanvasGroup canvasGroup;
+
+        [Header("Widgets")]
+        [SerializeField] private CoinsWidget coins;
+        [SerializeField] private LivesWidget lives;
+        [SerializeField] private CurrencyWidget stars;
 
         [Header("Settings")]
         [SerializeField] private TopBarViewSettings settings;
@@ -26,11 +34,23 @@ namespace UI
             rectTransform.anchoredPosition = offPos;
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
+
+            coins.Setup(2850, true);
+            lives.Setup(5, false);
+            stars.Setup(165, false);
+
+            coins.PlusPressed += OnCoinsPlusPressed;
         }
 
         private void OnDestroy()
         {
+            coins.PlusPressed -= OnCoinsPlusPressed;
             _transitionSequence?.Kill();
+        }
+
+        private void OnCoinsPlusPressed()
+        {
+            Logger.Log(LogTag, "Coins + pressed");
         }
 
         public async UniTask Show()
