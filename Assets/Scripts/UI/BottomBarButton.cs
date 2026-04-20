@@ -25,6 +25,7 @@ namespace UI
 
         private bool _isSelected;
         private Sequence _sequence;
+        private Tween _lockedShake;
 
         private void Awake()
         {
@@ -35,11 +36,17 @@ namespace UI
         {
             button.onClick.RemoveListener(HandlePress);
             _sequence?.Kill();
+            _lockedShake?.Kill();
         }
 
         private void HandlePress()
         {
-            if (IsLocked) return;
+            if (IsLocked)
+            {
+                PlayLockedShake();
+                return;
+            }
+
             OnPressed?.Invoke(this);
         }
 
@@ -100,6 +107,30 @@ namespace UI
                 iconTransform.DOAnchorPosY(targetY, duration).SetEase(ease));
 
             _sequence.SetUpdate(true);
+        }
+
+        private void PlayLockedShake()
+        {
+            _lockedShake?.Kill();
+            iconTransform.localEulerAngles = Vector3.zero;
+
+            var duration = settings.lockedShakeDuration;
+            var rot = settings.lockedShakeRotation;
+            var inDur = duration * settings.lockedRotateInPortion;
+            var outDur = duration * settings.lockedRotateOutPortion;
+            var swingDur = Mathf.Max(0f, duration - inDur - outDur);
+
+            _lockedShake = DOTween.Sequence()
+                .Join(iconTransform.DOShakeAnchorPos(
+                    duration,
+                    new Vector2(settings.lockedShakeStrength, 0f),
+                    settings.lockedShakeVibrato,
+                    0f))
+                .Join(DOTween.Sequence()
+                    .Append(iconTransform.DOLocalRotate(new Vector3(0f, 0f, rot), inDur).SetEase(Ease.OutQuad))
+                    .Append(iconTransform.DOLocalRotate(new Vector3(0f, 0f, -rot), swingDur).SetEase(Ease.InOutQuad))
+                    .Append(iconTransform.DOLocalRotate(Vector3.zero, outDur).SetEase(Ease.InQuad)))
+                .SetUpdate(true);
         }
     }
 }

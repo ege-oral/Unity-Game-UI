@@ -1,10 +1,12 @@
 using System;
+using System.Threading;
 using Core;
+using Cysharp.Threading.Tasks;
 using VContainer.Unity;
 
 namespace UI
 {
-    public class BottomBarHandler : IStartable, IDisposable
+    public class BottomBarHandler : IAsyncStartable, IDisposable
     {
         private const string LogTag = "BottomBar";
 
@@ -15,10 +17,12 @@ namespace UI
             _view = view;
         }
 
-        public void Start()
+        public async UniTask StartAsync(CancellationToken cancellation)
         {
             _view.ContentActivated += OnContentActivated;
             _view.Closed += OnClosed;
+
+            await _view.Show().AttachExternalCancellation(cancellation);
         }
 
         public void Dispose()

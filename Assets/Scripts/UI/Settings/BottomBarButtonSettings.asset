@@ -18,3 +18,9 @@ MonoBehaviour:
   iconSelectedY: 47
   animationDuration: 0.3
   animationEase: 6
+  lockedShakeStrength: 1.3
+  lockedShakeDuration: 0.4
+  lockedShakeVibrato: 20
+  lockedShakeRotation: 25
+  lockedRotateInPortion: 0.25
+  lockedRotateOutPortion: 0.25
