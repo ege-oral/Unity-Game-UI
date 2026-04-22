@@ -7,6 +7,7 @@ namespace UI.Popup
     [RequireComponent(typeof(CanvasGroup))]
     public abstract class BasePopup : MonoBehaviour
     {
+        [SerializeField] private RectTransform popupContainer;
         [SerializeField] private float animationDuration = 0.3f;
         [SerializeField] private Ease showEase = Ease.OutBack;
         [SerializeField] private Ease closeEase = Ease.InBack;
@@ -14,13 +15,11 @@ namespace UI.Popup
         public abstract string PopupName { get; }
 
         private CanvasGroup _canvasGroup;
-        private RectTransform _rectTransform;
         private Sequence _sequence;
 
         protected virtual void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
-            _rectTransform = GetComponent<RectTransform>();
         }
 
         public async UniTask Show(PopupData data = null)
@@ -29,11 +28,11 @@ namespace UI.Popup
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
 
-            _rectTransform.localScale = Vector3.zero;
+            popupContainer.localScale = Vector3.zero;
             _canvasGroup.alpha = 0f;
 
             _sequence = DOTween.Sequence()
-                .Join(_rectTransform.DOScale(1f, animationDuration).SetEase(showEase))
+                .Join(popupContainer.DOScale(1f, animationDuration).SetEase(showEase))
                 .Join(_canvasGroup.DOFade(1f, animationDuration))
                 .SetUpdate(true);
 
@@ -46,7 +45,7 @@ namespace UI.Popup
             _sequence?.Kill();
 
             _sequence = DOTween.Sequence()
-                .Join(_rectTransform.DOScale(0f, animationDuration).SetEase(closeEase))
+                .Join(popupContainer.DOScale(0f, animationDuration).SetEase(closeEase))
                 .Join(_canvasGroup.DOFade(0f, animationDuration))
                 .SetUpdate(true);
 
