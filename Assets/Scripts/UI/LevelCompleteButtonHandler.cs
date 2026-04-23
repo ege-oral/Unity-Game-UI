@@ -1,42 +1,39 @@
+using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UI.Popup;
-using UnityEngine;
-using UnityEngine.UI;
-using VContainer;
 using VContainer.Unity;
 
 namespace UI
 {
-    public class LevelCompleteButtonHandler : MonoBehaviour
+    public class LevelCompleteButtonHandler : IAsyncStartable, IDisposable
     {
-        [SerializeField] private Button levelCompleteButton;
-        [SerializeField] private int sampleScore = 12345;
-        [SerializeField, Range(0, 3)] private int sampleStars = 3;
+        private readonly LevelCompleteButtonView _view;
+        private readonly IPopupService _popupService;
 
-        private IPopupService _popupService;
-
-        private void Awake()
+        public LevelCompleteButtonHandler(LevelCompleteButtonView view, IPopupService popupService)
         {
-            var container = LifetimeScope.Find<GameLifetimeScope>().Container;
-            _popupService = container.Resolve<IPopupService>();
+            _view = view;
+            _popupService = popupService;
         }
 
-        private void OnEnable()
+        public async UniTask StartAsync(CancellationToken cancellation)
         {
-            levelCompleteButton.onClick.AddListener(OnClick);
+            _view.Clicked += OnClicked;
+            await _view.Show().AttachExternalCancellation(cancellation);
         }
 
-        private void OnDisable()
+        public void Dispose()
         {
-            levelCompleteButton.onClick.RemoveListener(OnClick);
+            _view.Clicked -= OnClicked;
         }
 
-        private void OnClick()
+        private void OnClicked()
         {
             var data = new LevelCompleteData
             {
-                Score = sampleScore,
-                Stars = sampleStars
+                Score = _view.SampleScore,
+                Stars = _view.SampleStars
             };
             _popupService.Show(PopupKeys.LevelComplete, data).Forget();
         }

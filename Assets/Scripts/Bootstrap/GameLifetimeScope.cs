@@ -9,6 +9,7 @@ public class GameLifetimeScope : LifetimeScope
     [SerializeField] private PopupRegistry popupRegistry;
     [SerializeField] private BottomBarView bottomBarView;
     [SerializeField] private TopBarView topBarView;
+    [SerializeField] private LevelCompleteButtonView levelCompleteButtonView;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -20,5 +21,8 @@ public class GameLifetimeScope : LifetimeScope
 
         builder.RegisterComponent(topBarView);
         builder.RegisterEntryPoint<TopBarHandler>();
+
+        builder.RegisterComponent(levelCompleteButtonView);
+        builder.RegisterEntryPoint<LevelCompleteButtonHandler>();
     }
 }
