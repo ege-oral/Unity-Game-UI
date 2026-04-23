@@ -20,11 +20,15 @@ namespace UI
         [Header("Sample Data")]
         [SerializeField] private int sampleScore = 12345;
         [SerializeField, Range(0, 3)] private int sampleStars = 3;
+        [SerializeField] private int sampleCoins = 100;
+        [SerializeField] private int sampleCrowns = 8;
 
         public event Action Clicked;
 
         public int SampleScore => sampleScore;
         public int SampleStars => sampleStars;
+        public int SampleCoins => sampleCoins;
+        public int SampleCrowns => sampleCrowns;
 
         private Sequence _transitionSequence;
 

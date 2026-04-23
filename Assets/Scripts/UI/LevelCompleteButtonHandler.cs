@@ -33,7 +33,9 @@ namespace UI
             var data = new LevelCompleteData
             {
                 Score = _view.SampleScore,
-                Stars = _view.SampleStars
+                Stars = _view.SampleStars,
+                Coins = _view.SampleCoins,
+                Crowns = _view.SampleCrowns
             };
             _popupService.Show(PopupKeys.LevelComplete, data).Forget();
         }

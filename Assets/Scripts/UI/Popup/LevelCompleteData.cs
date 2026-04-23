@@ -4,5 +4,7 @@ namespace UI.Popup
     {
         public int Score;
         public int Stars;
+        public int Coins;
+        public int Crowns;
     }
 }
