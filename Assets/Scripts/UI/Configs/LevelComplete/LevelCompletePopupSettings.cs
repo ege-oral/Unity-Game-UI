@@ -25,5 +25,9 @@ namespace UI.Configs
         [Header("Rewards")]
         public float rewardIconDuration = 0.35f;
         public float rewardCountDuration = 0.6f;
+
+        [Header("Buttons")]
+        public float buttonsDelay = 0.4f;
+        public float buttonsDuration = 0.35f;
     }
 }

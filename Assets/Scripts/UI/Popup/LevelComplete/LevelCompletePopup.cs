@@ -66,6 +66,9 @@ namespace UI.Popup
 
             coinReward.transform.localScale = Vector3.zero;
             crownReward.transform.localScale = Vector3.zero;
+
+            homeButton.transform.localScale = Vector3.zero;
+            rewardButton.transform.localScale = Vector3.zero;
         }
 
         private async UniTaskVoid PlayEntrance(LevelCompleteData data)
@@ -83,6 +86,15 @@ namespace UI.Popup
 
             await UniTask.Delay((int)((settings.rewardDelay - settings.scoreDelay) * 1000), DelayType.UnscaledDeltaTime);
             RevealRewards(data.Coins, data.Crowns);
+
+            await UniTask.Delay((int)(settings.buttonsDelay * 1000), DelayType.UnscaledDeltaTime);
+            RevealButtons();
+        }
+
+        private void RevealButtons()
+        {
+            homeButton.transform.DOScale(1f, settings.buttonsDuration).SetEase(Ease.OutBack).SetUpdate(true);
+            rewardButton.transform.DOScale(1f, settings.buttonsDuration).SetEase(Ease.OutBack).SetUpdate(true);
         }
 
         private async UniTaskVoid RevealTitle()
