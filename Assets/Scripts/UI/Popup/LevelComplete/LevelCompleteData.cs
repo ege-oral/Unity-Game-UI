@@ -1,6 +1,6 @@
 namespace UI.Popup
 {
-    public class LevelCompleteData : PopupData
+    public class LevelCompleteData : IPopupData
     {
         public int Score;
         public int Stars;

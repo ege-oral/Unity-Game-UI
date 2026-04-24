@@ -46,7 +46,7 @@ namespace UI.Popup
             rewardButton.onClick.RemoveListener(OnRewardButtonPressed);
         }
 
-        protected override void OnShow(PopupData data)
+        protected override void OnShow(IPopupData data)
         {
             if (data is not LevelCompleteData levelData) return;
 

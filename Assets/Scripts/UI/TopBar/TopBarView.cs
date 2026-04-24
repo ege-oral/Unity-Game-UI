@@ -36,6 +36,7 @@ namespace UI.TopBar
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
 
+            // Setup view with random values
             coins.Setup(2850);
             lives.Setup(5);
             stars.Setup(165);

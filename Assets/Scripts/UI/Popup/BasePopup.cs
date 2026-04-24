@@ -22,7 +22,7 @@ namespace UI.Popup
             _canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        public async UniTask Show(PopupData data = null)
+        public async UniTask Show(IPopupData data = null)
         {
             _sequence?.Kill();
             gameObject.SetActive(true);
@@ -54,7 +54,7 @@ namespace UI.Popup
             gameObject.SetActive(false);
         }
 
-        protected virtual void OnShow(PopupData data) { }
+        protected virtual void OnShow(IPopupData data) { }
         protected virtual void OnClose() { }
 
         private void OnDestroy()

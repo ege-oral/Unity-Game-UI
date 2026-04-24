@@ -11,7 +11,7 @@ namespace UI.Popup
             _registry = registry;
         }
 
-        public async UniTask<BasePopup> Show(string key, PopupData data = null)
+        public async UniTask<BasePopup> Show(string key, IPopupData data = null)
         {
             if (!_registry.TryGet(key, out var popup))
             {
