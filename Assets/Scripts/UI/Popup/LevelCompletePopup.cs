@@ -1,3 +1,4 @@
+using Coffee.UIExtensions;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
@@ -17,6 +18,7 @@ namespace UI.Popup
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private RectTransform star;
+        [SerializeField] private UIParticle starBurst;
 
         [Header("Rewards")]
         [SerializeField] private RectTransform coinIcon;
@@ -75,7 +77,7 @@ namespace UI.Popup
             RevealTitle().Forget();
 
             await UniTask.Delay((int)((settings.starDelay - settings.titleDelay) * 1000), DelayType.UnscaledDeltaTime);
-            RevealStar();
+            RevealStar().Forget();
 
             await UniTask.Delay((int)((settings.scoreDelay - settings.starDelay) * 1000), DelayType.UnscaledDeltaTime);
             CountScore(data.Score).Forget();
@@ -99,11 +101,15 @@ namespace UI.Popup
             titleText.text = _titleFull;
         }
 
-        private void RevealStar()
+        private async UniTaskVoid RevealStar()
         {
             var seq = DOTween.Sequence().SetUpdate(true);
             seq.Join(star.DOScale(1f, settings.starDuration).SetEase(Ease.OutBack));
             seq.Join(star.DORotate(Vector3.zero, settings.starDuration).SetEase(Ease.OutBack));
+
+            await seq.AsyncWaitForCompletion();
+
+            starBurst.Play();
         }
 
         private async UniTaskVoid CountScore(int target)
