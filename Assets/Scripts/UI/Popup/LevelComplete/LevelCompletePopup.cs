@@ -3,6 +3,8 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UI.Configs;
+using UI.Util;
+using UI.Widgets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,10 +23,9 @@ namespace UI.Popup
         [SerializeField] private UIParticle starBurst;
 
         [Header("Rewards")]
-        [SerializeField] private RectTransform coinIcon;
-        [SerializeField] private TextMeshProUGUI coinCountText;
-        [SerializeField] private RectTransform crownIcon;
-        [SerializeField] private TextMeshProUGUI crownCountText;
+        [SerializeField] private RewardItem coinReward;
+        [SerializeField] private RewardItem crownReward;
+        [SerializeField] private IconDatabase iconDatabase;
 
         [Header("Settings")]
         [SerializeField] private LevelCompletePopupSettings settings;
@@ -63,10 +64,8 @@ namespace UI.Popup
 
             scoreText.text = string.Empty;
 
-            coinIcon.localScale = Vector3.zero;
-            crownIcon.localScale = Vector3.zero;
-            coinCountText.text = string.Empty;
-            crownCountText.text = string.Empty;
+            coinReward.transform.localScale = Vector3.zero;
+            crownReward.transform.localScale = Vector3.zero;
         }
 
         private async UniTaskVoid PlayEntrance(LevelCompleteData data)
@@ -114,33 +113,20 @@ namespace UI.Popup
 
         private async UniTaskVoid CountScore(int target)
         {
-            await CountUp(scoreText, target, settings.scoreCountDuration);
+            await RewardUtil.CountUp(scoreText, target, settings.scoreCountDuration);
         }
 
         private void RevealRewards(int coins, int crowns)
         {
-            coinIcon.DOScale(1f, settings.rewardIconDuration).SetEase(Ease.OutBack).SetUpdate(true);
-            crownIcon.DOScale(1f, settings.rewardIconDuration).SetEase(Ease.OutBack).SetUpdate(true);
-            CountUp(coinCountText, coins, settings.rewardCountDuration).Forget();
-            CountUp(crownCountText, crowns, settings.rewardCountDuration).Forget();
+            RevealReward(coinReward, IconType.Coin, coins);
+            RevealReward(crownReward, IconType.Crown, crowns);
         }
 
-        private async UniTask CountUp(TextMeshProUGUI text, int target, float duration)
+        private void RevealReward(RewardItem reward, IconType iconType, int amount)
         {
-            var elapsed = 0f;
-            text.text = "0";
-
-            while (elapsed < duration)
-            {
-                elapsed += Time.unscaledDeltaTime;
-                var t = Mathf.Clamp01(elapsed / duration);
-                var eased = 1f - Mathf.Pow(1f - t, 3f);
-                var current = Mathf.Lerp(0f, target, eased);
-                text.text = Mathf.RoundToInt(current).ToString();
-                await UniTask.Yield(PlayerLoopTiming.Update);
-            }
-
-            text.text = target.ToString();
+            reward.Setup(iconDatabase.Get(iconType), 0);
+            reward.transform.DOScale(1f, settings.rewardIconDuration).SetEase(Ease.OutBack).SetUpdate(true);
+            RewardUtil.CountUp(reward.CountText, amount, settings.rewardCountDuration).Forget();
         }
 
         protected override void OnClose()

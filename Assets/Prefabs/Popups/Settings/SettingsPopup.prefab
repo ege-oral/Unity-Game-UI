@@ -1018,7 +1018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 206462574412888353}
   m_Layer: 5
-  m_Name: Language
+  m_Name: LanguageSection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1469,7 +1469,7 @@ GameObject:
   - component: {fileID: 7904061049602044497}
   - component: {fileID: 3220445472939148467}
   m_Layer: 5
-  m_Name: BlurBackdrop
+  m_Name: BlurOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
