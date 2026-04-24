@@ -17,6 +17,15 @@ namespace UI.Settings
         public float animationDuration = 0.3f;
         public DG.Tweening.Ease animationEase = DG.Tweening.Ease.OutQuad;
 
+        [Header("Selected Idle (Bob + Squash)")]
+        public float idleBobHeight = 8f;
+        public float idleBobDuration = 0.55f;
+        public float idlePauseDuration = 0.35f;
+        public float idleStretchX = 0.94f;
+        public float idleStretchY = 1.08f;
+        public float idleSquashX = 1.10f;
+        public float idleSquashY = 0.90f;
+
         [Header("Locked Shake (on tap)")]
         public float lockedShakeStrength = 12f;
         public float lockedShakeDuration = 0.4f;

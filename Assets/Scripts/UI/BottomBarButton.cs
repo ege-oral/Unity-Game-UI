@@ -12,6 +12,7 @@ namespace UI
         [Header("References")]
         [SerializeField] private RectTransform containerTransform;
         [SerializeField] private RectTransform iconTransform;
+        [SerializeField] private RectTransform iconImage;
         [SerializeField] private TextMeshProUGUI label;
         [SerializeField] private Button button;
 
@@ -26,10 +27,13 @@ namespace UI
         private bool _isSelected;
         private Sequence _sequence;
         private Tween _lockedShake;
+        private Sequence _idleTween;
+        private float _iconImageBaseY;
 
         private void Awake()
         {
             button.onClick.AddListener(HandlePress);
+            _iconImageBaseY = iconImage.anchoredPosition.y;
         }
 
         private void OnDestroy()
@@ -37,6 +41,7 @@ namespace UI
             button.onClick.RemoveListener(HandlePress);
             _sequence?.Kill();
             _lockedShake?.Kill();
+            _idleTween?.Kill();
         }
 
         private void HandlePress()
@@ -66,11 +71,51 @@ namespace UI
         {
             _isSelected = selected;
             _sequence?.Kill();
+            StopIdle();
 
             if (animated)
                 AnimateVisualState(selected);
             else
                 ApplyVisualState(selected);
+
+            if (selected)
+                StartIdle(animated);
+        }
+
+        private void StartIdle(bool waitForSelection)
+        {
+            var upDur = settings.idleBobDuration * 0.5f;
+            var downDur = settings.idleBobDuration * 0.3f;
+            var settleDur = settings.idleBobDuration * 0.2f;
+            var stretch = new Vector3(settings.idleStretchX, settings.idleStretchY, 1f);
+            var squash = new Vector3(settings.idleSquashX, settings.idleSquashY, 1f);
+
+            _idleTween = DOTween.Sequence().SetUpdate(true);
+
+            if (waitForSelection)
+                _idleTween.AppendInterval(settings.animationDuration + 0.05f);
+
+            _idleTween.Append(iconImage.DOAnchorPosY(_iconImageBaseY + settings.idleBobHeight, upDur).SetEase(Ease.OutQuad));
+            _idleTween.Join(iconImage.DOScale(stretch, upDur).SetEase(Ease.OutQuad));
+
+            _idleTween.Append(iconImage.DOAnchorPosY(_iconImageBaseY, downDur).SetEase(Ease.InQuad));
+            _idleTween.Join(iconImage.DOScale(squash, downDur).SetEase(Ease.InQuad));
+
+            _idleTween.Append(iconImage.DOScale(Vector3.one, settleDur).SetEase(Ease.OutSine));
+
+            _idleTween.AppendInterval(settings.idlePauseDuration);
+
+            _idleTween.SetLoops(-1, LoopType.Restart);
+        }
+
+        private void StopIdle()
+        {
+            _idleTween?.Kill();
+            _idleTween = null;
+            iconImage.localScale = Vector3.one;
+            var pos = iconImage.anchoredPosition;
+            pos.y = _iconImageBaseY;
+            iconImage.anchoredPosition = pos;
         }
 
         private void ApplyVisualState(bool selected)
