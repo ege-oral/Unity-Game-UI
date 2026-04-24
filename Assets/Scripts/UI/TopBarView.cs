@@ -35,22 +35,36 @@ namespace UI
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
 
-            coins.Setup(2850, true);
-            lives.Setup(5, false);
-            stars.Setup(165, false);
+            coins.Setup(2850);
+            lives.Setup(5);
+            stars.Setup(165);
 
-            coins.PlusPressed += OnCoinsPlusPressed;
+            coins.ButtonPressed += OnCoinsButtonPressed;
+            lives.ButtonPressed += OnLivesButtonPressed;
+            stars.ButtonPressed += OnStarsButtonPressed;
         }
 
         private void OnDestroy()
         {
-            coins.PlusPressed -= OnCoinsPlusPressed;
+            coins.ButtonPressed -= OnCoinsButtonPressed;
+            lives.ButtonPressed -= OnLivesButtonPressed;
+            stars.ButtonPressed -= OnStarsButtonPressed;
             _transitionSequence?.Kill();
         }
 
-        private void OnCoinsPlusPressed()
+        private void OnCoinsButtonPressed()
         {
             Logger.Log(LogTag, "Coins + pressed");
+        }
+
+        private void OnLivesButtonPressed()
+        {
+            Logger.Log(LogTag, "Lives + pressed");
+        }
+
+        private void OnStarsButtonPressed()
+        {
+            Logger.Log(LogTag, "Stars + pressed");
         }
 
         public async UniTask Show()

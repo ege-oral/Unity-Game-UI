@@ -9,31 +9,30 @@ namespace UI
     {
         [SerializeField] private Image currencyIcon;
         [SerializeField] protected TextMeshProUGUI countText;
-        [SerializeField] private Button plusButton;
+        [SerializeField] private Button button;
 
-        public event Action PlusPressed;
+        public event Action ButtonPressed;
 
         private void Awake()
         {
-            plusButton.onClick.AddListener(HandlePlus);
+            button.onClick.AddListener(HandleButtonPress);
         }
 
         private void OnDestroy()
         {
-            plusButton.onClick.RemoveListener(HandlePlus);
+            button.onClick.RemoveListener(HandleButtonPress);
         }
 
-        public virtual void Setup(int count, bool showPlus)
+        public virtual void Setup(int count)
         {
             countText.text = FormatCount(count);
-            plusButton.gameObject.SetActive(showPlus);
         }
 
         protected virtual string FormatCount(int count) => count.ToString();
 
-        private void HandlePlus()
+        private void HandleButtonPress()
         {
-            PlusPressed?.Invoke();
+            ButtonPressed?.Invoke();
         }
     }
 }

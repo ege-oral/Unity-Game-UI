@@ -10,9 +10,9 @@ namespace UI
 
         [SerializeField] private TMP_Text remainingLivesText;
 
-        public override void Setup(int count, bool showPlus)
+        public override void Setup(int count)
         {
-            base.Setup(count, showPlus);
+            base.Setup(count);
             remainingLivesText.text = count >= MaxLives ? FullLabel : "15:00"; // placeholder — drive from a regeneration timer service later
         }
     }
