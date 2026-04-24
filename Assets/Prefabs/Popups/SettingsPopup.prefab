@@ -1516,7 +1516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2636,12 +2636,64 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4091071092940883779, guid: 7b09832c56cc34d75b7bca81bdd1a85b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1464065040477375570}
+    - targetCorrespondingSourceObject: {fileID: 7097282364233043251, guid: 7b09832c56cc34d75b7bca81bdd1a85b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 306304565197299495}
   m_SourcePrefab: {fileID: 100100000, guid: 7b09832c56cc34d75b7bca81bdd1a85b, type: 3}
 --- !u!224 &1502294428966960499 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6551781674082798817, guid: 7b09832c56cc34d75b7bca81bdd1a85b, type: 3}
   m_PrefabInstance: {fileID: 5635589087474823570}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3191713890933177505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7097282364233043251, guid: 7b09832c56cc34d75b7bca81bdd1a85b, type: 3}
+  m_PrefabInstance: {fileID: 5635589087474823570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &306304565197299495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191713890933177505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 5815870745237526359}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!224 &3741643619909637036 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9068384219663901246, guid: 7b09832c56cc34d75b7bca81bdd1a85b, type: 3}
@@ -2652,6 +2704,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8862405816937204150, guid: 7b09832c56cc34d75b7bca81bdd1a85b, type: 3}
   m_PrefabInstance: {fileID: 5635589087474823570}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5815870745237526359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2198809725321684677, guid: 7b09832c56cc34d75b7bca81bdd1a85b, type: 3}
+  m_PrefabInstance: {fileID: 5635589087474823570}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191713890933177505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &6628184497012536068 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1569971505573380758, guid: 7b09832c56cc34d75b7bca81bdd1a85b, type: 3}
@@ -2684,6 +2747,7 @@ MonoBehaviour:
   showEase: 27
   closeEase: 26
   closeButton: {fileID: 4648784944251465896}
+  overlayCloseButton: {fileID: 306304565197299495}
   soundToggleButton: {fileID: 7046296462964288088}
   musicToggleButton: {fileID: 7212229891862861551}
   vibrationToggleButton: {fileID: 1453130248210070853}

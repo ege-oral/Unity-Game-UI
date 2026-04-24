@@ -9,6 +9,7 @@ namespace UI.Popup
     {
         [Header("Buttons")]
         [SerializeField] private Button closeButton;
+        [SerializeField] private Button overlayCloseButton;
         [SerializeField] private Button soundToggleButton;
         [SerializeField] private Button musicToggleButton;
         [SerializeField] private Button vibrationToggleButton;
@@ -28,6 +29,7 @@ namespace UI.Popup
         private void OnEnable()
         {
             closeButton.onClick.AddListener(OnCloseButtonPressed);
+            overlayCloseButton.onClick.AddListener(OnCloseButtonPressed);
             soundToggleButton.onClick.AddListener(() => ToggleSlider(soundToggle));
             musicToggleButton.onClick.AddListener(() => ToggleSlider(musicToggle));
             vibrationToggleButton.onClick.AddListener(() => ToggleSlider(vibrationToggle));
@@ -37,6 +39,7 @@ namespace UI.Popup
         private void OnDisable()
         {
             closeButton.onClick.RemoveListener(OnCloseButtonPressed);
+            overlayCloseButton.onClick.RemoveListener(OnCloseButtonPressed);
             soundToggleButton.onClick.RemoveAllListeners();
             musicToggleButton.onClick.RemoveAllListeners();
             vibrationToggleButton.onClick.RemoveAllListeners();

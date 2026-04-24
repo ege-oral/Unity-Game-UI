@@ -1046,6 +1046,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3641167453183088878, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
+      propertyPath: m_text
+      value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3641167453183088878, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: a8ac134e7018b419980c4fa1676c7515, type: 2}
     - target: {fileID: 4257145645429700671, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1162,6 +1170,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomBarView
       objectReference: {fileID: 0}
+    - target: {fileID: 7991907974324923175, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
+      propertyPath: m_text
+      value: Library
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991907974324923175, guid: 7a99a4bf49fc64fd389dadd8e8dd20f5, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: a8ac134e7018b419980c4fa1676c7515, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
