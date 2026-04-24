@@ -18,6 +18,13 @@ MonoBehaviour:
   iconSelectedY: 47
   animationDuration: 0.3
   animationEase: 6
+  idleBobHeight: 8
+  idleBobDuration: 0.55
+  idlePauseDuration: 0.8
+  idleStretchX: 0.94
+  idleStretchY: 1.08
+  idleSquashX: 1.1
+  idleSquashY: 0.9
   lockedShakeStrength: 1.3
   lockedShakeDuration: 0.4
   lockedShakeVibrato: 20
