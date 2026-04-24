@@ -17,6 +17,7 @@ namespace UI.Settings
 
         [Header("Star")]
         public float starDuration = 0.45f;
+        public float starOvershootScale = 1.3f;
 
         [Header("Score")]
         public float scoreCountDuration = 0.8f;

@@ -19,6 +19,7 @@ MonoBehaviour:
   rewardDelay: 0.55
   titleCharInterval: 0.06
   starDuration: 0.45
+  starOvershootScale: 1.5
   scoreCountDuration: 0.8
   rewardIconDuration: 0.35
   rewardCountDuration: 0.6

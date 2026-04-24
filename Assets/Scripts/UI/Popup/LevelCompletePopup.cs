@@ -104,12 +104,12 @@ namespace UI.Popup
         private async UniTaskVoid RevealStar()
         {
             var seq = DOTween.Sequence().SetUpdate(true);
-            seq.Join(star.DOScale(1f, settings.starDuration).SetEase(Ease.OutBack));
-            seq.Join(star.DORotate(Vector3.zero, settings.starDuration).SetEase(Ease.OutBack));
+            seq.Append(star.DOScale(settings.starOvershootScale, settings.starDuration * 0.6f).SetEase(Ease.OutCubic));
+            seq.Append(star.DOScale(1f, settings.starDuration * 0.4f).SetEase(Ease.OutQuad));
+            seq.Insert(0f, star.DORotate(Vector3.zero, settings.starDuration).SetEase(Ease.OutBack));
+            starBurst.Play();
 
             await seq.AsyncWaitForCompletion();
-
-            starBurst.Play();
         }
 
         private async UniTaskVoid CountScore(int target)
@@ -141,6 +141,11 @@ namespace UI.Popup
             }
 
             text.text = target.ToString();
+        }
+
+        protected override void OnClose()
+        {
+            starBurst.Stop();
         }
 
         private void OnHomeButtonPressed()
